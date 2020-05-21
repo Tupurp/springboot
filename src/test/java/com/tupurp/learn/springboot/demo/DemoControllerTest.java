@@ -1,5 +1,6 @@
 package com.tupurp.learn.springboot.demo;
 
+import com.tupurp.learn.springboot.demo.web.controller.DemoController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

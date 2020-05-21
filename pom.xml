@@ -39,6 +39,37 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!--视图-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<!--使用thymeleaf的时候，会对html进行严格的语法校验，实际并没有什么必要，如下是解决方法
+		同时在配置文件application.properties中进行如下配置：
+		spring.thymeleaf.mode=LEGACYHTML5
+		将spring.thymeleaf.mode默认值为“HTML5”的严格模式，改为“LEGACYHTML5”非严格模式；LEGACYHTML5的使用需要与nekohtml依赖相搭配搭配。
+
+		页面html标签必须引入xmlns:th="http://www.thymeleaf.org" 
+		-->
+		<dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+			<version>1.9.22</version>
+		</dependency>
 	</dependencies>
 
 	<build>
