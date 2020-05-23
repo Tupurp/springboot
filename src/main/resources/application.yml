@@ -8,5 +8,31 @@
 #      - 5
 #      - 6
 #      - 7
+
+server:
+  port: 8080
+spring:
+  profiles:
+    active: prod
+---
+
+server:
+  port: 8081
+spring:
+  profiles: dev
+
+---
+
 server:
   port: 8082
+
+spring:
+  profiles: test
+
+---
+
+server:
+  port: 8083
+
+spring:
+  profiles: prod
