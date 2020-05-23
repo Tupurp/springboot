@@ -3,8 +3,6 @@
 ### 一：配置文件读取
 
 + @Value和@ConfigurationProperties获取值区别
-|||@Value|
-| :- | :- | :- |
 
     |  | @ConfigurationProperties  | @Value |
     | ------------- | ------------- | ------------- |
@@ -17,9 +15,9 @@
 
 + `${}`配置文件占位符
     + 随机数
-    ```java
+    ```text
         ${random.value},${random.int},${random.long},
-        ${random.int(10)}, ${random.int[10,1024]},
+        ${random.int(10)}, ${random.int[10,1024]}
   ```
 + Profile
     + 多Profile文件

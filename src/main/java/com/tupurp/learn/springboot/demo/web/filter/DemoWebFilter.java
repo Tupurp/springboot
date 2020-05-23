@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
 * web过滤器demo
 * */
-public class DemoFilter implements Filter {
+public class DemoWebFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest)servletRequest;

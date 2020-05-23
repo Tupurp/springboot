@@ -1,6 +1,6 @@
 package com.tupurp.learn.springboot.demo.web;
 
-import com.tupurp.learn.springboot.demo.web.filter.DemoFilter;
+import com.tupurp.learn.springboot.demo.web.filter.DemoWebFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
  * 3：嵌套的configuration必须是静态类。
  * */
 @Configuration
-public class WebConfiguration {
+public class DemoWebConfiguration {
 
     /**
      *
@@ -30,12 +30,12 @@ public class WebConfiguration {
     public FilterRegistrationBean buildFilterRegistration(){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         //设置过滤器
-        registrationBean.setFilter(new DemoFilter());
+        registrationBean.setFilter(new DemoWebFilter());
         //设置过滤规则
         registrationBean.addUrlPatterns("/*");
         //设置一些初始化参数
         registrationBean.addInitParameter("name","value");
-        registrationBean.setName("webDemoFilter");
+        registrationBean.setName("demoWebFilter");
         registrationBean.setOrder(1);
         return registrationBean;
     }

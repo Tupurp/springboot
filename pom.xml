@@ -76,6 +76,20 @@
 			<artifactId>nekohtml</artifactId>
 			<version>1.9.22</version>
 		</dependency>
+
+		<!--webjar-->
+		<!--访问使用webjars/jquery/3.5.1/jquery.js-->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.5.1</version>
+		</dependency>
+		<!--访问使用webjars/bootstrap/4.5.0/js/bootstrap.bundle.js-->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>4.5.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
