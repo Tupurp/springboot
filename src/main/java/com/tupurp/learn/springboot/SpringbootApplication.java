@@ -2,6 +2,7 @@ package com.tupurp.learn.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @SpringBootApplication 来标注一个主程序类，说明这是一个spring boot 应用
@@ -21,6 +22,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *      从spring-boot-autoconfigure/META-INF/spring.factories 中的值作为自动配置类导入
  * )
  * */
+/**
+ * springboot并不会读取xml的bean配置，如果需要使用，需要在springboot启动类加上@ImportResource注解并指定配置文件位置
+ * 但不推荐使用此方法，springboot推荐使用注解的方式
+ * */
+//@ImportResource(locations = "classpath:demo/beans.xml")
 @SpringBootApplication
 public class SpringbootApplication {
 

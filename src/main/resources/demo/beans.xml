@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--springboot并不会读取xml的bean配置，如果需要使用，需要在springboot启动类加上@ImportResource注解并指定配置文件位置-->
+    <bean id="personService" class="com.tupurp.learn.springboot.demo.service.PersonService"></bean>
+</beans>
