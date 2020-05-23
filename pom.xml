@@ -58,6 +58,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 		<!--使用thymeleaf的时候，会对html进行严格的语法校验，实际并没有什么必要，如下是解决方法
 		同时在配置文件application.properties中进行如下配置：
 		spring.thymeleaf.mode=LEGACYHTML5

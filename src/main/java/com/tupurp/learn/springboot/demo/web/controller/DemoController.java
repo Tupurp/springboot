@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @Package com.tupurp.learn.springboot.demo
  * @Description: springboot web测试类，返回json数据
  * @date 2020/5/21 17:58
+ * 1:@RestController = @Controller + @ResponseBody
+ *
  */
 @RestController
 @RequestMapping("/demo")
