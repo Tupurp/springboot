@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>thymeleaf</title>
+    <!--引用静态资源 js前带上斜杠，表示到默认的static目录下去找js目录-->
+    <!--    <script th:src="@{/js/demo.js}" /> 会造成页面空白不能加载-->
+    <script th:src="@{/static/assets/js/demo.js}" ></script>
+</head>
+<body>
+<!--thymeLeaf在idea中报红线的解决方法：
+settings->inspectioins->ThymeLeaf 取消Expression variables validation 勾选
+-->
+    用户信息
+    <p th:text="'用户名称：' + ${user.name}"/>
+</body>
+</html>
+
+<!--
+http://www.ityouknow.com/springboot/2016/05/01/spring-boot-thymeleaf.html
+https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html
+标准表达式语法
+它们分为四类：
+
+1.变量表达式
+2.选择或星号表达式
+3.文字国际化表达式
+4.URL 表达式
+
+
+
+-->
