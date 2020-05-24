@@ -1,11 +1,15 @@
 package com.tupurp.learn.springboot.demo.web.controller;
 
 import com.tupurp.learn.springboot.demo.constant.DemoProperties;
+import com.tupurp.learn.springboot.demo.dao.DemoJdbcTemplate;
 import com.tupurp.learn.springboot.demo.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @author zhangxiaoman
@@ -53,10 +57,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
 
+        @Autowired
+        private DemoJdbcTemplate demoJdbcTemplate;
+
         @ResponseBody
         @RequestMapping("/hello")
         public String hello() {
             return "Hello World";
+        }
+
+        @ResponseBody
+        @RequestMapping("/department")
+        public Map<String,Object> department() {
+
+            return demoJdbcTemplate.map();
         }
 
         @RequestMapping("/user")
