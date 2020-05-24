@@ -63,6 +63,8 @@
 
 ### 三：数据库操作    
 
+#### 3.1：数据源
+
 +   引入starter ``spring-boot-starter-jdbc``
 +   配置``spring.datasource.xx`` 相关数据库配置
 +   默认数据源``com.zaxxer.hikari.HikariDataSource``
@@ -143,3 +145,21 @@
         }
 
     ```   
+    
+#### 3.2 mybatis 
++ 引入依赖
+
+```xml
+    <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>1.3.1</version>
+    </dependency>
+
+```   
+
++ 创建Javabean
+
++ 注解版开发`com.tupurp.learn.springboot.demo.mapper.DepartmentMapper`,`com.tupurp.learn.springboot.demo.config.MyBatisAnnotationConfig`
+
++ 配置文件开发
