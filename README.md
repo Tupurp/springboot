@@ -162,4 +162,30 @@
 
 + 注解版开发`com.tupurp.learn.springboot.demo.mapper.DepartmentMapper`,`com.tupurp.learn.springboot.demo.config.MyBatisAnnotationConfig`
 
-+ 配置文件开发
++ [配置文件开发](https://mybatis.org/mybatis-3/)
+
+    1) mapper接口,方法
+    
+    2) mapper.xml,sql映射文件
+    
+    3) 主配置文件,引入mapper文件,包扫描
+    
+    4) 告知springboot mybatis的主配置文件位置`mybatis.config-location`
+    
+#### 3.3 springData JPA
+
++ 引入依赖
+
+```xml
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+```   
+
++ 创建Javabean，使用JPA注解 `@Entity`、`@Table`、`@Column`、`@GeneratedValue`等 配置映射关系
+
++ 创建接口继承JpaRepository来完成对数据库的操作
+
++ 主配置文件配置`spring.jpa.xx`相关配置

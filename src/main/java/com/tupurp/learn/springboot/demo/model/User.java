@@ -1,9 +1,6 @@
 package com.tupurp.learn.springboot.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -12,6 +9,7 @@ import java.io.Serializable;
  * Entity 中不映射成列的字段得加 @Transient 注解，不加注解也会映射成列
  * */
 @Entity
+@Table(name = "user") //如果省略，默认为类名小写
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,7 +24,7 @@ public class User implements Serializable {
     private String email;
     @Column(nullable = false,unique = true)
     private String mobile;
-    @Column(nullable = false)
+    @Column(nullable = false) //如果省略，默认列名就是属性名
     private String password;
 
     public User() {

@@ -1,6 +1,6 @@
 package com.tupurp.learn.springboot.demo;
 
-import com.tupurp.learn.springboot.demo.model.Person;
+import com.tupurp.learn.springboot.demo.constant.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

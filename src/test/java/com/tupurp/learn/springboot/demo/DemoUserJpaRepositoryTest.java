@@ -1,6 +1,6 @@
 package com.tupurp.learn.springboot.demo;
 
-import com.tupurp.learn.springboot.demo.dao.DemoUserJpaRepository;
+import com.tupurp.learn.springboot.demo.jpa.DemoUserJpaRepository;
 import com.tupurp.learn.springboot.demo.model.User;
 import org.junit.Assert;
 import org.junit.Test;

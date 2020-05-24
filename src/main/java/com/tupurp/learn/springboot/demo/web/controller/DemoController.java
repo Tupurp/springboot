@@ -1,14 +1,15 @@
 package com.tupurp.learn.springboot.demo.web.controller;
 
-import com.tupurp.learn.springboot.demo.constant.DemoProperties;
-import com.tupurp.learn.springboot.demo.dao.DemoJdbcTemplate;
+import com.tupurp.learn.springboot.demo.jdbc.DemoJdbcTemplate;
+import com.tupurp.learn.springboot.demo.jpa.DemoUserJpaRepository;
 import com.tupurp.learn.springboot.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
 /**
@@ -57,15 +58,24 @@ import java.util.Map;
 public class DemoController {
 
 
-        @Autowired
+        @Resource
         private DemoJdbcTemplate demoJdbcTemplate;
 
+        @Resource
+        private DemoUserJpaRepository demoUserJpaRepository;
+
+        /**
+         * 简单测试
+         * */
         @ResponseBody
         @RequestMapping("/hello")
         public String hello() {
             return "Hello World";
         }
 
+        /**
+        * jdbcTemplate测试
+        * */
         @ResponseBody
         @RequestMapping("/department")
         public Map<String,Object> department() {
@@ -73,6 +83,31 @@ public class DemoController {
             return demoJdbcTemplate.map();
         }
 
+        /**
+         * jpa查询测试
+         * */
+        @ResponseBody
+        @RequestMapping("/userJson/{id}")
+        public User userJson(@PathVariable("id") Long id) {
+
+            return demoUserJpaRepository.findById(id).get();
+        }
+
+        /**
+         * jpa插入测试（实体类已设置自增主键）
+         * */
+        @ResponseBody
+        @RequestMapping("/userJson")
+        public User saveUserJson(User user) {
+
+           User save =demoUserJpaRepository.save(user);
+           return save;
+        }
+
+
+    /**
+         * 测试thymeleaf
+         * */
         @RequestMapping("/user")
         public User user(){
             User user = new User();
@@ -82,6 +117,9 @@ public class DemoController {
             return user;
         }
 
+        /**
+         * 测试
+         * */
         @RequestMapping("/view")
         public String view(){
             return "/demo/view";
