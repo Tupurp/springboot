@@ -58,3 +58,88 @@
     以上文件时按照优先级`从低到高`的顺序，所有位置的文件都会被加载，高优先级配置会覆盖低优先级配置
     
     我们也可以通过配置`spring.config.location`来改变默认配置
+    
+### 二：webmvc
+
+### 三：数据库操作    
+
++   引入starter ``spring-boot-starter-jdbc``
++   配置``spring.datasource.xx`` 相关数据库配置
++   默认数据源``com.zaxxer.hikari.HikariDataSource``
++   默认可自动配置数据源   
+
+    ```text
+    org.apache.commons.dbcp2.BasicDataSource
+    com.zaxxer.hikari.HikariDataSource
+    org.apache.tomcat.jdbc.pool.DataSource
+    ```
+    
++   自定义数据源 
+    
+    1) ``spring.datasource.type=指定数据源``
+    
+    2)  配置自定义数据源相关属性，并将配置绑定到数据源
+    
+    ```java
+        package com.tupurp.learn.springboot.demo.config;
+        
+        import com.alibaba.druid.pool.DruidDataSource;
+        import com.alibaba.druid.support.http.StatViewServlet;
+        import com.alibaba.druid.support.http.WebStatFilter;
+        import org.springframework.boot.context.properties.ConfigurationProperties;
+        import org.springframework.boot.web.servlet.FilterRegistrationBean;
+        import org.springframework.boot.web.servlet.ServletRegistrationBean;
+        import org.springframework.context.annotation.Bean;
+        import org.springframework.context.annotation.Configuration;
+        
+        import java.util.Arrays;
+        import java.util.HashMap;
+        import java.util.Map;
+        
+        /**
+         *
+         * druid数据源设置
+         * */
+        @Configuration
+        public class DruidConfig {
+            /**
+             * druid数据源配置绑定
+             * */
+            @Bean
+            @ConfigurationProperties(prefix = "spring.datasource")
+            public DruidDataSource druidDataSource(){
+                return new DruidDataSource();
+            }
+        
+            /**
+             * 配置druid监控
+             * 配置一个管理后台的servlet
+             * */
+            @Bean
+            public ServletRegistrationBean statViewServlet(){
+                ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet());
+                Map<String,String> initParam = new HashMap<>();
+                initParam.put("loginUsername","tupurp");
+                initParam.put("loginPassword","pass!0ve");
+                initParam.put("allow","");//默认允许所有
+                bean.setInitParameters(initParam);
+                bean.addUrlMappings("/druid/*");
+                return bean;
+        
+            }
+            /**
+             * 配置一个监控的filter
+             * */
+            @Bean
+            public FilterRegistrationBean webStatFilter(){
+                FilterRegistrationBean bean = new FilterRegistrationBean();
+                bean.setFilter(new WebStatFilter());
+                Map<String,String> initParam = new HashMap<>();
+                initParam.put("exclusions","*.js,*.css,*.svg,/druid/*");
+                bean.setInitParameters(initParam);
+                bean.addUrlPatterns("/druid/*");
+                return bean;
+            }
+        }
+
+    ```   

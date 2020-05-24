@@ -45,9 +45,22 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+		<!--原生jdbc-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<!--mybatis-->
+		<!--jpa-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!--自定义数据源-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.1.8</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>

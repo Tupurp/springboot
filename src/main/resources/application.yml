@@ -1,14 +1,4 @@
 
-# 配置文件优先级
-#person:
-#  name: 张三
-#  age: 16
-#  maps: {v1: k1,v2: 55}
-#  list:
-#      - 5
-#      - 6
-#      - 7
-
 server:
   port: 8080
 spring:
@@ -24,10 +14,10 @@ spring:
 ---
 
 server:
-  port: 8082
+  port: 9090
 
 spring:
-  profiles: test
+  profiles: demo
 
 ---
 
