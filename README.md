@@ -189,3 +189,6 @@
 + 创建接口继承JpaRepository来完成对数据库的操作
 
 + 主配置文件配置`spring.jpa.xx`相关配置
+
+
+### 四：redis

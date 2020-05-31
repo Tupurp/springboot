@@ -1,5 +1,5 @@
 
-####centos7使用docker
+#### centos7使用docker
 ```bash
     yum install docker
     systemctl enable docker
@@ -10,7 +10,7 @@
     service firewalld stop
 ```
 
-####docker镜像常用操作
+#### docker镜像常用操作
 ```
     #检索镜像 docker hub
     docker search 关键字
@@ -26,7 +26,7 @@
 
 ```
 
-####docker 容器操作
+#### docker 容器操作
 
 | 操作 | 命令 | 说明 |
 | ---- | ---- | ---- |
@@ -72,36 +72,46 @@
       ```
     
     
-    3) 配置内容如下
++ 配置内容如下
+ 
     
-    ```text
-          # For explanations see
-          # http://dev.mysql.com/doc/mysql/en/server-system-variables.html
-          
-          [mysqld]
-          pid-file        = /var/run/mysqld/mysqld.pid
-          socket          = /var/run/mysqld/mysqld.sock
-          datadir         = /var/lib/mysql
-          #log-error      = /var/log/mysql/error.log
-          # By default we only accept connections from localhost
-          #bind-address   = 127.0.0.1
-          # Disabling symbolic-links is recommended to prevent assorted security risks
-          symbolic-links=0
-          character_set_server=utf8
-          init_connect='SET NAMES utf8'
-          max_allowed_packet = 20M
-          
-          [mysql]
-          default-character-set = utf8
-          
-          [mysql.server]
-          default-character-set = utf8
-          
-          [mysqld_safe]
-          default-character-set = utf8
-          
-          [client]
-          default-character-set = utf8
-    ```
+        ```text
+              # For explanations see
+              # http://dev.mysql.com/doc/mysql/en/server-system-variables.html
+              
+              [mysqld]
+              pid-file        = /var/run/mysqld/mysqld.pid
+              socket          = /var/run/mysqld/mysqld.sock
+              datadir         = /var/lib/mysql
+              #log-error      = /var/log/mysql/error.log
+              # By default we only accept connections from localhost
+              #bind-address   = 127.0.0.1
+              # Disabling symbolic-links is recommended to prevent assorted security risks
+              symbolic-links=0
+              character_set_server=utf8
+              init_connect='SET NAMES utf8'
+              max_allowed_packet = 20M
+              
+              [mysql]
+              default-character-set = utf8
+              
+              [mysql.server]
+              default-character-set = utf8
+              
+              [mysqld_safe]
+              default-character-set = utf8
+              
+              [client]
+              default-character-set = utf8
+        ```
+
+#### [启动zookeeper容器](https://hub.docker.com/_/zookeeper)
+
++ 下载镜像 ``docker pull zookeeper:3.5``
+
++ 启动镜像 ``docker run --name zookeeper -p 2181:2181 --restart always -d 6bd990489b09``
+    
++ 客户端连接测试 `docker run -it --rm --link zookeeper:zookeeper zookeeper:3.5 zkCli.sh -server zookeeper`  
+    
     
 

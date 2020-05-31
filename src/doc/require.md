@@ -13,6 +13,7 @@
 
 + virtualBox
 + centos7
++ docker
 + smarTTY
 
 + BANDZIP
