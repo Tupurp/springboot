@@ -41,7 +41,19 @@
 | 更多命令  | https://docs.docker.com ||
 
 
-#### 配置阿里云加速
+#### [配置阿里云加速](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)
+
++ 针对Docker客户端版本大于 1.10.0 的用户
+    
+        您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器
+        sudo mkdir -p /etc/docker
+        sudo tee /etc/docker/daemon.json <<-'EOF'
+        {
+          "registry-mirrors": ["https://kmtpjw1m.mirror.aliyuncs.com"]
+        }
+        EOF
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
 
 #### [启动mysql容器](https://hub.docker.com/_/mysql)
 
@@ -77,35 +89,34 @@
 + 配置内容如下
  
     
-        ```text
-              # For explanations see
-              # http://dev.mysql.com/doc/mysql/en/server-system-variables.html
-              
-              [mysqld]
-              pid-file        = /var/run/mysqld/mysqld.pid
-              socket          = /var/run/mysqld/mysqld.sock
-              datadir         = /var/lib/mysql
-              #log-error      = /var/log/mysql/error.log
-              # By default we only accept connections from localhost
-              #bind-address   = 127.0.0.1
-              # Disabling symbolic-links is recommended to prevent assorted security risks
-              symbolic-links=0
-              character_set_server=utf8
-              init_connect='SET NAMES utf8'
-              max_allowed_packet = 20M
-              
-              [mysql]
-              default-character-set = utf8
-              
-              [mysql.server]
-              default-character-set = utf8
-              
-              [mysqld_safe]
-              default-character-set = utf8
-              
-              [client]
-              default-character-set = utf8
-        ```
+      # For explanations see
+      # http://dev.mysql.com/doc/mysql/en/server-system-variables.html
+      
+      [mysqld]
+      pid-file        = /var/run/mysqld/mysqld.pid
+      socket          = /var/run/mysqld/mysqld.sock
+      datadir         = /var/lib/mysql
+      #log-error      = /var/log/mysql/error.log
+      # By default we only accept connections from localhost
+      #bind-address   = 127.0.0.1
+      # Disabling symbolic-links is recommended to prevent assorted security risks
+      symbolic-links=0
+      character_set_server=utf8
+      init_connect='SET NAMES utf8'
+      max_allowed_packet = 20M
+      
+      [mysql]
+      default-character-set = utf8
+      
+      [mysql.server]
+      default-character-set = utf8
+      
+      [mysqld_safe]
+      default-character-set = utf8
+      
+      [client]
+      default-character-set = utf8
+        
 
 #### [启动zookeeper容器](https://hub.docker.com/_/zookeeper)
 
