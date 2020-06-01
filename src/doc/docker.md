@@ -41,6 +41,8 @@
 | 更多命令  | https://docs.docker.com ||
 
 
+#### 配置阿里云加速
+
 #### [启动mysql容器](https://hub.docker.com/_/mysql)
 
 ``docker run -p 3306:3306 --name mysql5.7 -e MYSQL_ROOT_PASSWORD=pass!0ve -d mysql:5.7``
@@ -112,6 +114,25 @@
 + 启动镜像 ``docker run --name zookeeper -p 2181:2181 --restart always -d 6bd990489b09``
     
 + 客户端连接测试 `docker run -it --rm --link zookeeper:zookeeper zookeeper:3.5 zkCli.sh -server zookeeper`  
+
+#### [启动consul容器](https://hub.docker.com/_/consul)
+
++ 下载镜像 ``docker pull consul:1.6.5``
+
++ 启动镜像 ``docker run -d -p 8500:8500 -v /data/consul:/consul/data -e CONSUL_BIND_INTERFACE='eth0' --name=consul_server_1 consul:1.6.5 a
+         gent -server -bootstrap -ui -node=1 -client='0.0.0.0'``
+
++ [exited问题解决](https://blog.csdn.net/rznice/java/article/details/52170085)
+  ``docker logs consul`` 可以看见 ``chown: /consul/data: Permission denied``
+  
+       原因是CentOS7中的安全模块selinux把权限禁掉了，至少有以下三种方式解决挂载的目录没有权限的问题：
+         1.在运行容器的时候，给容器加特权，及加上 --privileged=true 参数：
+         docker run -i -t -v /soft:/soft --privileged=true 686672a1d0cc /bin/bash
+         2.临时关闭selinux：
+         setenforce 0
+         3.添加selinux规则，改变要挂载的目录的安全性文本
+
++ [参考](https://www.cnblogs.com/lfzm/p/10633595.html)
     
     
 
